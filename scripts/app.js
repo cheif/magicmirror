@@ -17,7 +17,6 @@ function init() {
       }, {});
       state.env = env;
       div.className = 'hidden';
-      console.log(state);
       window.location.search = objectToQueryStringEncodeJSON({state: state});
     });
   }
