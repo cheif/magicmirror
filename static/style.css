@@ -1,0 +1,68 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: helvetica;
+  width: 100%;
+  height: 100%;
+}
+.left {
+  float: left;
+  width: 50%;
+}
+.calendar {
+  width: 70%;
+  margin-left: 4rem;
+}
+.right {
+  float: right;
+}
+.clock {
+  width: 100%;
+  text-align: right;
+  font-size: 7rem;
+  margin: 0;
+  float: right;
+}
+.weather {
+  width: 100%;
+  text-align: right;
+}
+#weather-icon {
+  margin: 0 2rem;
+}
+.weather-top {
+  width: 100%;
+  text-align: right;
+}
+.temperature {
+  font-size: 5rem;
+  line-height: 128px;
+  vertical-align: middle;
+  float: right;
+}
+
+.weather-text {
+  text-align: center;
+  float: right;
+  font-size: 2rem;
+  width: 70%;
+}
+
+#input-env {
+  color: black;
+  background-color: white;
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  width: 60%;
+  padding: 5%;
+  transition: transform .4s ease-in-out;
+}
+
+#input-env input {
+  width: 50%;
+}
+
+#input-env.hidden {
+  transform: translate3d(0px, 180%, 0px);
+}
