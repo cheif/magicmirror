@@ -37,7 +37,7 @@ DayProto.attachedCallback = function() {
           t.events.forEach(function(ev) {
             var event = document.createElement('div');
             event.className = 'event';
-            if (ev.users.length == 2) {
+            if (ev.users.length > 1) {
               // Both users participating
               event.style = 'text-align: center;';
             } else if (ev.users[0].id === users[0].id) {
