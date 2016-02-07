@@ -1,5 +1,5 @@
 var SCOPE = "https://www.googleapis.com/auth/calendar.readonly profile";
-var REDIRECT_URI = location.origin;
+var REDIRECT_URI = location.origin + location.pathname;
 
 function getAuth(cb) {
   var query = queryStringToObjectDecodeJSON(window.location.search);
@@ -12,7 +12,7 @@ function getAuth(cb) {
       code: query.code,
       client_id: state.env.GOOGLE_CLIENT_ID,
       client_secret: state.env.GOOGLE_CLIENT_SECRET,
-      redirect_uri: 'http://localhost:8080',
+      redirect_uri: REDIRECT_URI,
       grant_type: 'authorization_code',
     })
     .done(function(data) {
