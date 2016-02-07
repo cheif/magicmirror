@@ -17,7 +17,7 @@ function getAuth(cb) {
     })
     .done(function(data) {
       state.refresh_tokens.push(data.refresh_token);
-      window.location.href = 'http://localhost:8080' + objectToQueryStringEncodeJSON({state: state});
+      window.location.href = REDIRECT_URI + objectToQueryStringEncodeJSON({state: state});
     });
   } else if (query.hasOwnProperty('addUser')) {
     // Start a login
@@ -26,7 +26,6 @@ function getAuth(cb) {
       redirect_uri: REDIRECT_URI,
       response_type: 'code',
       access_type: 'offline',
-      immediate: 'true',
       client_id: state.env.GOOGLE_CLIENT_ID,
       state: state,
     };
