@@ -1,0 +1,33 @@
+{
+  "license": "ISC",
+  "name": "mirror",
+  "repository": {
+    "url": "git+https://github.com/cheif/magicmirror.js.git",
+    "type": "git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/cheif/magicmirror.js/issues"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+    "react-skycons": "^0.2.1",
+    "express": "^4.13.4",
+    "react-dom": "^15.0.2",
+    "react": "^15.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt": "^1.0.1",
+    "nodemon": "^1.9.2",
+    "grunt-browserify": "^5.0.0",
+    "grunt-react": "^0.12.3"
+  },
+  "main": "index.js",
+  "homepage": "https://github.com/cheif/magicmirror.js#readme",
+  "description": "This is a magic-mirror app written completely in JS, all the config and state is saved in the ?state url-param, so it should be easy to run of github."
+}

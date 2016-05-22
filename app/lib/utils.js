@@ -1,9 +1,9 @@
 // Utilities
-function zeroPad(n) {
+module.exports.zeroPad = (n) => {
   return (n < 10) ? '0' + n : n;
 }
 
-function queryStringToObjectDecodeJSON(queryString) {
+module.exports.queryStringToObjectDecodeJSON = (queryString) => {
   return queryString.replace('?', '').split('&').reduce(function(params, pair) {
     var splits = pair.split('=');
     var val = decodeURIComponent(splits[1]);
@@ -17,12 +17,11 @@ function queryStringToObjectDecodeJSON(queryString) {
   }, {});
 }
 
-function objectToQueryStringEncodeJSON(obj) {
-  window.obj = obj;
+module.exports.objectToQueryStringEncodeJSON = (obj) => {
   return '?' + Object.keys(obj).map(function(k) {
     var val = obj[k];
     if (val instanceof Object) {
-      val = btoa(JSON.stringify(val));
+      val = new Buffer(JSON.stringify(val)).toString('base64');
     }
     return k + '=' + encodeURIComponent(val);
   }).join('&');
