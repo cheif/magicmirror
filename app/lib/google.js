@@ -1,5 +1,5 @@
 var SCOPE = "https://www.googleapis.com/auth/calendar.readonly profile";
-const GOOGLE_CLIENT_ID = '891123764217-t6ui9lpiutppt8r7kpcgmirkt3anspjr.apps.googleusercontent.com'
+
 const querystring = require('querystring')
 const utils = require('./utils')
 const request = require('request')
@@ -10,12 +10,25 @@ const serialize = (data) => {
     }).join('&');
 };
 
+module.exports.getAuthUrl = (req) => {
+  const redirectUri = `${req.protocol}://${req.get('host')}/codeCallback`;
+  const params = {
+    scope: SCOPE,
+    redirect_uri: redirectUri,
+    response_type: 'code',
+    access_type: 'offline',
+    client_id: process.env.GOOGLE_CLIENT_ID,
+    state: req.query.state,
+  }
+  return 'https://accounts.google.com/o/oauth2/v2/auth' + utils.objectToQueryStringEncodeJSON(params)
+}
+
 module.exports.getRefreshToken = (code, redirectUri) => {
   return new Promise((resolve, reject) => {
     request.post('https://www.googleapis.com/oauth2/v4/token', {
       form: {
         code: code,
-        client_id: GOOGLE_CLIENT_ID,
+        client_id: process.env.GOOGLE_CLIENT_ID,
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
         redirect_uri: redirectUri,
         grant_type: 'authorization_code',
@@ -35,7 +48,7 @@ module.exports.getAccessToken = (refreshToken) => {
     request.post('https://www.googleapis.com/oauth2/v4/token', {
       form: {
         refresh_token: refreshToken,
-        client_id: GOOGLE_CLIENT_ID,
+        client_id: process.env.GOOGLE_CLIENT_ID,
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
         grant_type: 'refresh_token',
       }
@@ -62,16 +75,7 @@ module.exports.getAuth = (cb) => {
         fetch('/getToken?refreshToken=' + refreshToken).then(r => r.json()))
        ).then(responses => resolve(responses.map(resp => resp.access_token)))
     } else {
-      const REDIRECT_URI = location.origin + '/codeCallback';
-      const params = {
-        scope: SCOPE,
-        redirect_uri: REDIRECT_URI,
-        response_type: 'code',
-        access_type: 'offline',
-        client_id: GOOGLE_CLIENT_ID,
-        state: state,
-      }
-      window.location.href = 'https://accounts.google.com/o/oauth2/v2/auth' + utils.objectToQueryStringEncodeJSON(params)
+      window.location.href = '/addUser';
     }
   })
 }

@@ -11,14 +11,15 @@
   },
   "version": "1.0.0",
   "dependencies": {
-    "react-skycons": "^0.2.1",
+    "react": "^15.0.2",
     "express": "^4.13.4",
-    "react-dom": "^15.0.2",
-    "react": "^15.0.2"
+    "request": "^2.72.0",
+    "react-skycons": "^0.2.1",
+    "react-dom": "^15.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "compile": "grunt",
+    "start": "node app/index.js"
   },
   "devDependencies": {
     "grunt-contrib-watch": "^1.0.0",

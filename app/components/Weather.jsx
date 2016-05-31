@@ -37,11 +37,12 @@ class Weather extends React.Component {
   render() {
     return (
       <div className='weather'>
-      <div className='weather-top'>
-      <canvas ref={(ref) => this.weatherIcon = ref} width="128" height="128"></canvas>
-      <div className='temperature'>{this.state.temperature}°C</div>
-      </div>
-      <div className='weather-text'>{this.state.text}</div>
+        <div className='weather-top'>
+          <canvas ref={(ref) => this.weatherIcon = ref} width="128" height="128"></canvas>
+          <div className='temperature'>{this.state.temperature}°C</div>
+        </div>
+        <div className='weather-text'>{this.state.text}</div>
+        <div style={{clear: 'both'}} />
       </div>
     )
   }

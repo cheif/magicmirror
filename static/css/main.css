@@ -4,6 +4,7 @@ body {
   font-family: helvetica;
   width: 100%;
   height: 100%;
+  margin: 0;
 }
 .left {
   float: left;
@@ -15,6 +16,7 @@ body {
 }
 .right {
   float: right;
+  width: 50%;
 }
 .title { font-size: 2rem; text-decoration: underline; margin: 0 auto 10px auto; text-align: center;}
 .event {width: 100%;}
@@ -48,4 +50,17 @@ body {
   float: right;
   font-size: 2rem;
   width: 70%;
+}
+
+.sl {
+  margin-top: 15px;
+  margin-left: 10rem;
+}
+
+.sl span {
+  font-size: 1.4rem;
+}
+
+.sl .departures {
+  margin-left: 30px;
 }
