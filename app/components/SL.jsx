@@ -22,12 +22,12 @@ class SL extends React.Component {
     }
     return (
       <div className='sl'>
-      {this.state.stops.map(stop => (
-        <div className='stop'>
+      {this.state.stops.map((stop, i) => (
+        <div className='stop' key={i}>
           <span>{stop.name}</span>
           <div className='departures'>
-            {stop.departures.map(dep => (
-              <div className='departure'>
+            {stop.departures.map((dep, i) => (
+              <div className='departure' key={i}>
               {icons[dep.TransportMode]} {dep.LineNumber} {'->'} {dep.Destination}. {dep.DisplayTime}
               </div>
             ))}

@@ -24,9 +24,9 @@ class Time extends React.Component {
     return (
       <div className='time'>
         {t.hasTime ? (<span style={this.timeStyle}>{utils.zeroPad(t.time.getHours())}:{utils.zeroPad(t.time.getMinutes())}</span>):(<span />)}
-        {t.events.map(ev => {
+        {t.events.map((ev, i) => {
           return (
-            <div className='event'>
+            <div className='event' key={i}>
             {ev.summary}
             </div>
           )
@@ -44,7 +44,7 @@ class Day extends React.Component {
       <div className='day'>
         <div className='title'>{name}</div>
         <div className='times'>
-          {this.times.map(time => <Time data={time} users={users}/>)}
+          {this.times.map((time, i) => <Time data={time} users={users} key={i}/>)}
         </div>
       </div>
     )
@@ -105,8 +105,8 @@ class Calendar extends React.Component {
   render() {
     return (
       <div className='calendar'>
-      {this.state.events.reduce(google.eventsByDay, []).map(day =>
-        <Day events={day.events} name={day.name} users={this.state.users}/>
+      {this.state.events.reduce(google.eventsByDay, []).map((day, i) =>
+        <Day events={day.events} name={day.name} users={this.state.users} key={i}/>
       )}
       </div>
     )
